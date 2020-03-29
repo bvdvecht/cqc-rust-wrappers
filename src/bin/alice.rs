@@ -1,6 +1,6 @@
 use std::net::Ipv4Addr;
 use cqc::hdr::CommHdr;
-use qkd_rs::Cqc;
+use cqcwrappers::Cqc;
 
 fn bob() -> CommHdr {
     CommHdr {

@@ -1,5 +1,5 @@
 [package]
-name = " cqc-rust-wrappers"
+name = "cqcwrappers"
 version = "0.1.0"
 authors = ["bart"]
 edition = "2018"

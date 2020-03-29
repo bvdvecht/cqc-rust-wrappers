@@ -1,4 +1,4 @@
-use qkd_rs::Cqc;
+use cqcwrappers::Cqc;
 
 fn main() {
     let cqc = Cqc::new(10, "localhost", 8004);
