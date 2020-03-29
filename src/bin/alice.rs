@@ -1,9 +1,9 @@
 use std::net::Ipv4Addr;
-use cqc::hdr::CommHdr;
+use cqc::builder::RemoteId;
 use cqcwrappers::Cqc;
 
-fn bob() -> CommHdr {
-    CommHdr {
+fn bob() -> RemoteId {
+    RemoteId {
         remote_app_id: 10,
         remote_port: 8004,
         remote_node: u32::from(Ipv4Addr::new(127, 0, 0, 1)),

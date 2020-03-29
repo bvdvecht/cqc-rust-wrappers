@@ -4,8 +4,6 @@ use cqc::Response;
 use cqc::builder::RemoteId;
 use cqc::hdr::CmdOpt;
 use cqc::hdr::MeasOut;
-use cqc::XtraHdr;
-use cqc::hdr::CommHdr;
 use bincode::Config;
 use std::net::TcpStream;
 
@@ -53,13 +51,13 @@ impl Cqc {
         response.notify.get_qubit_hdr().qubit_id
     }
 
-    pub fn create_epr(&self, receiver: CommHdr, notify: bool) -> u16 {
+    pub fn create_epr(&self, receiver: RemoteId, notify: bool) -> u16 {
         let mut options = CmdOpt::empty();
         if notify {
             options = *options.set_notify();
         }
 
-        let request = self.builder.cmd_epr(1337, options, XtraHdr::Comm(receiver));
+        let request = self.builder.cmd_epr(1337, options, receiver);
         self.send_request(&request);
 
         // expect EprOk + Entanglement Information Header
