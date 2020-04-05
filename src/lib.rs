@@ -1,4 +1,4 @@
-use cqc::builder::Builder;
+use cqc::builder::Client;
 use cqc::Request;
 use cqc::Response;
 use cqc::builder::RemoteId;
@@ -8,14 +8,14 @@ use bincode::Config;
 use std::net::TcpStream;
 
 pub struct Cqc {
-    builder: Builder,
+    builder: Client,
     stream: TcpStream,
     coder: Config
 }
 
 impl Cqc {
     pub fn new(app_id: u16, host: &str, port: u16) -> Cqc {
-        let builder = Builder::new(app_id);
+        let builder = Client::new(app_id);
         let stream = TcpStream::connect((host, port)).unwrap();
         let mut coder = bincode::config();
         coder.big_endian();
